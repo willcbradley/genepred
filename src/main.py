@@ -23,8 +23,8 @@ iprobs = {"C": 0.5, "N": 0.5}
 predicted = viterbi(genome, iprobs, tprobs, eprobs)
 
 # test accuracy
+accuracy = 0
 for i in range(1000000):
-    accuracy = 0
     if annotation[i] == predicted[i]:
         accuracy += 1
 print(f"Accuracy is {accuracy/10000}%")

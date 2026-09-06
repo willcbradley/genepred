@@ -22,7 +22,7 @@ def viterbi(sequence, iprobs, tprobs, eprobs):
     first_backpointers = {}
 
     for state in states:
-        first_probs[state] = math.log(iprobs[state]) * math.log(eprobs[state][first_nucleotide])
+        first_probs[state] = math.log(iprobs[state]) + math.log(eprobs[state][first_nucleotide])
         first_backpointers[state] = None
 
     vtable.append(first_probs)
@@ -46,7 +46,7 @@ def viterbi(sequence, iprobs, tprobs, eprobs):
 
             for prev_state in states:
 
-                prob = vtable[-1][prev_state] * math.log(tprobs[prev_state][current_state]) * math.log(eprobs[current_state][nucleotide])
+                prob = vtable[-1][prev_state] + math.log(tprobs[prev_state][current_state]) + math.log(eprobs[current_state][nucleotide])
 
                 if prob > best_prob:
                     best_prob = prob

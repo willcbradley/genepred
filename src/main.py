@@ -9,8 +9,8 @@ genome = parse_fasta("../data/sequence.fasta")
 annotation = parse_gff("../data/annotation.gff", len(genome))
 
 # train model on first 500k nucleotides; run model on whole genome
-training_genome = genome[:2000000]
-training_annotation = annotation[:2000000]
+training_genome = genome[:500000]
+training_annotation = annotation[:500000]
 
 # estimate emission and transition probabilities
 eprobs = est_emission(training_genome, training_annotation)

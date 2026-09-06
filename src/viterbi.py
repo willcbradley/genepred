@@ -41,7 +41,7 @@ def viterbi(sequence, iprobs, tprobs, eprobs):
         for current_state in states:
             
             # init here so that they aren't reset with each loop through PREVIOUS states, but are reset before considering new CURRENT state
-            best_prob = 0
+            best_prob = float("-inf") # cannot equal zero
             best_prev_state = None
 
             for prev_state in states:

@@ -22,4 +22,9 @@ iprobs = {"C": 0.5, "N": 0.5}
 # run viterbi alg
 predicted = viterbi(genome, iprobs, tprobs, eprobs)
 
-print(predicted)
+# test accuracy
+for i in range(1000000):
+    accuracy = 0
+    if annotation[i] == predicted[i]:
+        accuracy += 1
+print(f"Accuracy is {accuracy/10000}%")
